@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isValidQuotation(data) {
+      return data.keys().hasAll(['correlativeNumber', 'date', 'client', 'issuer', 'items'])
+        && data.correlativeNumber is string && data.correlativeNumber.size() <= 50
+        && data.date is string && data.date.size() <= 20
+        && data.client is map
+        && data.issuer is map
+        && data.items is list
+        && data.items.size() <= 200;
+    }
+
+    // Default deny all other paths
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Quotations history collection
+    match /quotations/{quotationId} {
+      allow read: if isValidId(quotationId);
+      allow create: if isValidId(quotationId) && isValidQuotation(incoming());
+      allow update: if isValidId(quotationId) && isValidQuotation(incoming());
+      allow delete: if isValidId(quotationId);
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "entities": {
+    "Quotation": {
+      "title": "Quotation",
+      "description": "Cotización oficial emitida para la Municipalidad Provincial de Pachitea",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identificador único de la cotización"
+        },
+        "correlativeNumber": {
+          "type": "string",
+          "description": "Número correlativo oficial ej. COT-2026-0001"
+        },
+        "correlativeCounter": {
+          "type": "number",
+          "description": "Contador correlativo numérico"
+        },
+        "date": {
+          "type": "string",
+          "description": "Fecha de emisión en formato DD/MM/YYYY"
+        },
+        "time": {
+          "type": "string",
+          "description": "Hora de emisión en formato HH:MM:SS"
+        },
+        "validityDays": {
+          "type": "number",
+          "description": "Días de validez de la oferta (por defecto 30)"
+        },
+        "deliveryTime": {
+          "type": "string",
+          "description": "Plazo de entrega (01 día calendario)"
+        },
+        "paymentMethod": {
+          "type": "string",
+          "description": "Modalidad de pago bancaria"
+        },
+        "warranty": {
+          "type": "string",
+          "description": "Términos de garantía o calidad"
+        },
+        "currency": {
+          "type": "string",
+          "description": "Moneda oficial (PEN)"
+        },
+        "currencySymbol": {
+          "type": "string",
+          "description": "Símbolo de la moneda (S/.)"
+        },
+        "observations": {
+          "type": "string",
+          "description": "Observaciones generales de la cotización"
+        },
+        "client": {
+          "type": "object",
+          "description": "Datos de la entidad solicitante"
+        },
+        "issuer": {
+          "type": "object",
+          "description": "Datos del proveedor Garay Aquino Wilder"
+        },
+        "items": {
+          "type": "array",
+          "description": "Lista de bienes o productos cotizados"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp ISO de creación"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp ISO de última actualización"
+        }
+      },
+      "required": ["correlativeNumber", "date", "client", "issuer", "items"]
+    }
+  },
+  "firestore": {
+    "/quotations/{quotationId}": {
+      "schema": "Quotation",
+      "description": "Almacén histórico en la nube de todas las cotizaciones emitidas"
+    }
+  }
+}

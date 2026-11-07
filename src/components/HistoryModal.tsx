@@ -41,7 +41,7 @@ export const HistoryModal: React.FC<Props> = ({
                 Historial de Cotizaciones
               </h3>
               <p className="text-xs text-slate-400">
-                Cotizaciones emitidas a la Municipalidad Provincial de Pachitea
+                Cotizaciones emitidas a la Municipalidad Provincial de Pachitea • Base de Datos en la nube
               </p>
             </div>
           </div>
