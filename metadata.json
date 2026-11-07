@@ -1,0 +1,6 @@
+{
+  "name": "Cotizador Municipal Pachitea",
+  "description": "Plantilla de cotización moderna y minimalista exclusiva para la Municipalidad Provincial de Pachitea con numeración correlativa automática, cálculo sin IGV y exportación a Google Sheets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
