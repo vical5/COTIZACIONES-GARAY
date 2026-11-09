@@ -31,6 +31,32 @@ export default function App() {
   const [editMode, setEditMode] = useState<boolean>(true);
   const [history, setHistory] = useState<Quotation[]>(() => getQuotationHistory());
 
+  // Dark Mode: Always opens by default in dark mode per user specification
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    try {
+      const saved = localStorage.getItem('pachitea_theme');
+      // If user explicitly saved 'light', use it, otherwise default ALWAYS to true (dark)
+      return saved === 'light' ? false : true;
+    } catch {
+      return true;
+    }
+  });
+
+  // Keep html.dark in sync with state
+  useEffect(() => {
+    try {
+      if (darkMode) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('pachitea_theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('pachitea_theme', 'light');
+      }
+    } catch (e) {
+      console.warn('Could not sync theme to localStorage', e);
+    }
+  }, [darkMode]);
+
   // Firebase Auth state for Google Workspace / Sheets
   const [user, setUser] = useState<User | null>(null);
   const [accessToken, setAccessToken] = useState<string | null>(null);
@@ -381,7 +407,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100/70 text-slate-900 flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-100/70 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col font-sans transition-colors duration-200">
       {/* Top Navigation & Controls */}
       <HeaderNav
         quotation={quotation}
@@ -396,6 +422,8 @@ export default function App() {
         onPrint={handlePrint}
         onExportCsv={handleExportCsv}
         onSaveQuotation={handleSaveQuotation}
+        darkMode={darkMode}
+        onToggleDarkMode={() => setDarkMode((prev) => !prev)}
       />
 
       {/* Main Quotation Document Sheet */}

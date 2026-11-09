@@ -84,10 +84,10 @@ export const GoogleSheetsModal: React.FC<Props> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 no-print animate-in fade-in duration-200">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden border border-slate-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-xs p-4 no-print animate-in fade-in duration-200">
+      <div className="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden border border-slate-200 dark:border-slate-800 transition-colors">
         {/* Header */}
-        <div className="bg-slate-900 text-white px-6 py-4 flex items-center justify-between">
+        <div className="bg-slate-900 dark:bg-slate-950 text-white px-6 py-4 flex items-center justify-between border-b border-slate-800">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-emerald-400">
               <FileSpreadsheet className="w-5 h-5 text-emerald-400" />
@@ -113,19 +113,19 @@ export const GoogleSheetsModal: React.FC<Props> = ({
         <div className="p-6 space-y-5">
           {createdSheet ? (
             <div className="text-center py-4 space-y-4">
-              <div className="w-14 h-14 mx-auto rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600">
+              <div className="w-14 h-14 mx-auto rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-700 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
               <div>
-                <h4 className="text-lg font-bold text-slate-900">
+                <h4 className="text-lg font-bold text-slate-900 dark:text-white">
                   ¡Hoja de Cálculo Creada con Éxito!
                 </h4>
-                <p className="text-sm text-slate-600 mt-1">
-                  Se ha generado la cotización <span className="font-semibold text-slate-800">{quotation.correlativeNumber}</span> con todas las fórmulas matemáticas, datos de la Municipalidad de Pachitea y tabla de {quotation.items.length} productos.
+                <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                  Se ha generado la cotización <span className="font-semibold text-slate-800 dark:text-slate-200">{quotation.correlativeNumber}</span> con todas las fórmulas matemáticas, datos de la Municipalidad de Pachitea y tabla de {quotation.items.length} productos.
                 </p>
               </div>
 
-              <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-left text-xs font-mono text-slate-700 truncate">
+              <div className="p-3 bg-slate-50 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700 text-left text-xs font-mono text-slate-700 dark:text-slate-300 truncate">
                 {createdSheet.title}
               </div>
 
@@ -141,7 +141,7 @@ export const GoogleSheetsModal: React.FC<Props> = ({
                 </a>
                 <button
                   onClick={onClose}
-                  className="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-medium text-sm transition-colors"
+                  className="px-4 py-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl font-medium text-sm transition-colors border border-transparent dark:border-slate-700"
                 >
                   Cerrar
                 </button>
@@ -150,44 +150,44 @@ export const GoogleSheetsModal: React.FC<Props> = ({
           ) : (
             <>
               {/* Summary of what will be exported */}
-              <div className="bg-slate-50 rounded-xl p-4 border border-slate-200/80 space-y-2.5 text-xs text-slate-600">
-                <div className="flex justify-between items-center text-slate-900 font-medium pb-2 border-b border-slate-200">
+              <div className="bg-slate-50 dark:bg-slate-800/60 rounded-xl p-4 border border-slate-200/80 dark:border-slate-700 space-y-2.5 text-xs text-slate-600 dark:text-slate-400">
+                <div className="flex justify-between items-center text-slate-900 dark:text-white font-medium pb-2 border-b border-slate-200 dark:border-slate-700">
                   <span>Documento a Generar:</span>
-                  <span className="font-mono bg-white px-2 py-0.5 rounded border border-slate-300">
+                  <span className="font-mono bg-white dark:bg-slate-900 px-2 py-0.5 rounded border border-slate-300 dark:border-slate-600">
                     {quotation.correlativeNumber}
                   </span>
                 </div>
                 <div className="flex justify-between">
                   <span>Cliente Destinatario:</span>
-                  <span className="font-semibold text-slate-800">
+                  <span className="font-semibold text-slate-800 dark:text-slate-200">
                     MUNICIPALIDAD PROVINCIAL DE PACHITEA
                   </span>
                 </div>
                 <div className="flex justify-between">
                   <span>R.U.C. Cliente:</span>
-                  <span className="font-mono font-medium text-slate-800">20183995121</span>
+                  <span className="font-mono font-medium text-slate-800 dark:text-slate-200">20183995121</span>
                 </div>
                 <div className="flex justify-between">
                   <span>N° de Ítems en Tabla:</span>
-                  <span className="font-semibold text-slate-800">{quotation.items.length} ítems</span>
+                  <span className="font-semibold text-slate-800 dark:text-slate-200">{quotation.items.length} ítems</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Suma Total (Sin IGV):</span>
-                  <span className="font-bold text-slate-950">
+                  <span className="font-bold text-slate-950 dark:text-white">
                     S/.{' '}
                     {quotation.items
                       .reduce((acc, it) => acc + it.subtotal, 0)
                       .toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </span>
                 </div>
-                <div className="flex justify-between text-slate-500 pt-1 border-t border-slate-200 text-[11px]">
+                <div className="flex justify-between text-slate-500 dark:text-slate-400 pt-1 border-t border-slate-200 dark:border-slate-700 text-[11px]">
                   <span>Fórmulas automáticas:</span>
                   <span>=CANTIDAD * COSTO_PARCIAL y =SUM(...)</span>
                 </div>
               </div>
 
               {exportError && (
-                <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 text-xs flex items-start gap-2">
+                <div className="p-3 bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-800 rounded-xl text-red-700 dark:text-red-300 text-xs flex items-start gap-2">
                   <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
                   <span>{exportError}</span>
                 </div>
@@ -196,7 +196,7 @@ export const GoogleSheetsModal: React.FC<Props> = ({
               {/* Authentication state */}
               {!user || !accessToken ? (
                 <div className="text-center pt-2 space-y-3">
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
                     Para crear la hoja en tu cuenta de Google, inicia sesión con Google:
                   </p>
                   <div className="flex justify-center">

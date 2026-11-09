@@ -97,10 +97,10 @@ with check (true);
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 no-print animate-in fade-in duration-200">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[88vh] flex flex-col overflow-hidden border border-slate-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-xs p-4 no-print animate-in fade-in duration-200">
+      <div className="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[88vh] flex flex-col overflow-hidden border border-slate-200 dark:border-slate-800 transition-colors">
         {/* Header */}
-        <div className="bg-slate-900 text-white px-6 py-4 flex items-center justify-between shrink-0">
+        <div className="bg-slate-900 dark:bg-slate-950 text-white px-6 py-4 flex items-center justify-between shrink-0 border-b border-slate-800">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg bg-blue-500/20 border border-blue-400/30 flex items-center justify-center text-blue-400">
               <History className="w-5 h-5 text-blue-400" />
@@ -123,18 +123,18 @@ with check (true);
         </div>
 
         {/* Supabase Status & Integration Banner */}
-        <div className="bg-slate-50 border-b border-slate-200 px-6 py-2.5 flex flex-wrap items-center justify-between gap-2 text-xs">
+        <div className="bg-slate-50 dark:bg-slate-850 border-b border-slate-200 dark:border-slate-800 px-6 py-2.5 flex flex-wrap items-center justify-between gap-2 text-xs">
           <div className="flex items-center gap-2">
-            <Database className="w-4 h-4 text-emerald-600" />
-            <span className="font-medium text-slate-700">Base de Datos:</span>
+            <Database className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+            <span className="font-medium text-slate-700 dark:text-slate-300">Base de Datos:</span>
             {isSupaActive ? (
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
-                <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700">
+                <CheckCircle2 className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                 Supabase Conectado
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-blue-100 text-blue-800 border border-blue-300">
-                <CheckCircle2 className="w-3 h-3 text-blue-600" />
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-blue-100 dark:bg-blue-950/60 text-blue-800 dark:text-blue-300 border border-blue-300 dark:border-blue-700">
+                <CheckCircle2 className="w-3 h-3 text-blue-600 dark:text-blue-400" />
                 Cloud Database Activa (Híbrido)
               </span>
             )}
@@ -142,7 +142,7 @@ with check (true);
 
           <button
             onClick={() => setShowSupabaseGuide(!showSupabaseGuide)}
-            className="text-blue-700 hover:text-blue-900 font-bold flex items-center gap-1 hover:underline text-xs"
+            className="text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 font-bold flex items-center gap-1 hover:underline text-xs"
           >
             <span>{showSupabaseGuide ? 'Ocultar Guía Supabase' : 'Pasos para vincular Supabase'}</span>
             {showSupabaseGuide ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
@@ -220,14 +220,14 @@ VITE_SUPABASE_ANON_KEY=&quot;tu-anon-public-key&quot;
         )}
 
         {/* List */}
-        <div className="p-6 overflow-y-auto space-y-3 flex-1">
+        <div className="p-6 overflow-y-auto space-y-3 flex-1 bg-white dark:bg-slate-900">
           {history.length === 0 ? (
-            <div className="text-center py-12 text-slate-400">
-              <FileText className="w-12 h-12 mx-auto stroke-[1.5] text-slate-300 mb-2" />
-              <p className="text-sm font-medium text-slate-600">
+            <div className="text-center py-12 text-slate-400 dark:text-slate-500">
+              <FileText className="w-12 h-12 mx-auto stroke-[1.5] text-slate-300 dark:text-slate-600 mb-2" />
+              <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
                 No hay cotizaciones archivadas en el historial aún.
               </p>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">
                 Al pulsar en &quot;Guardar Cotización en Historial&quot; o &quot;Generar Nueva Cotización&quot;, los registros se guardarán automáticamente aquí.
               </p>
             </div>
@@ -241,37 +241,37 @@ VITE_SUPABASE_ANON_KEY=&quot;tu-anon-public-key&quot;
                   key={q.id || q.correlativeNumber}
                   className={`p-4 rounded-xl border transition-all ${
                     isCurrent
-                      ? 'border-blue-500/80 bg-blue-50/50 ring-1 ring-blue-500/30'
-                      : 'border-slate-200 bg-white hover:border-slate-300 hover:shadow-xs'
+                      ? 'border-blue-500/80 bg-blue-50/50 dark:bg-blue-950/40 ring-1 ring-blue-500/30'
+                      : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-xs'
                   }`}
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
-                        <span className="font-mono font-bold text-slate-900 text-sm tracking-tight">
+                        <span className="font-mono font-bold text-slate-900 dark:text-white text-sm tracking-tight">
                           {q.correlativeNumber}
                         </span>
                         {isCurrent && (
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-100 text-blue-700">
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300">
                             Activa
                           </span>
                         )}
-                        <span className="text-xs text-slate-500 font-medium">
+                        <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
                           ({q.items.length} ítems)
                         </span>
                       </div>
 
-                      <div className="flex items-center gap-4 text-xs text-slate-500">
+                      <div className="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400">
                         <span className="inline-flex items-center gap-1">
-                          <Calendar className="w-3.5 h-3.5 text-slate-400" />
+                          <Calendar className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
                           {q.date}
                         </span>
                         <span className="inline-flex items-center gap-1">
-                          <Clock className="w-3.5 h-3.5 text-slate-400" />
+                          <Clock className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
                           {q.time}
                         </span>
-                        <span className="font-medium text-slate-700">
-                          Total sin IGV: <strong className="text-slate-900">S/. {totalAmount.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong>
+                        <span className="font-medium text-slate-700 dark:text-slate-300">
+                          Total sin IGV: <strong className="text-slate-900 dark:text-white">S/. {totalAmount.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong>
                         </span>
                       </div>
                     </div>
@@ -280,7 +280,7 @@ VITE_SUPABASE_ANON_KEY=&quot;tu-anon-public-key&quot;
                       {onPrintQuotation && (
                         <button
                           onClick={() => onPrintQuotation(q)}
-                          className="inline-flex items-center gap-1 px-2.5 py-1.5 bg-slate-900 hover:bg-black text-white rounded-lg text-xs font-bold transition-all hover:scale-[1.02] shadow-2xs"
+                          className="inline-flex items-center gap-1 px-2.5 py-1.5 bg-slate-900 hover:bg-black dark:bg-slate-800 dark:hover:bg-slate-700 text-white rounded-lg text-xs font-bold transition-all hover:scale-[1.02] shadow-2xs border border-transparent dark:border-slate-700"
                           title="Volver a imprimir esta cotización archivada"
                         >
                           <Printer className="w-3.5 h-3.5" />
@@ -290,7 +290,7 @@ VITE_SUPABASE_ANON_KEY=&quot;tu-anon-public-key&quot;
                       {onExportPdfQuotation && (
                         <button
                           onClick={() => onExportPdfQuotation(q)}
-                          className="inline-flex items-center gap-1 px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-lg text-xs font-bold transition-colors border border-slate-300"
+                          className="inline-flex items-center gap-1 px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-lg text-xs font-bold transition-colors border border-slate-300 dark:border-slate-700"
                           title="Descargar PDF de esta cotización"
                         >
                           <FileDown className="w-3.5 h-3.5" />
@@ -303,7 +303,7 @@ VITE_SUPABASE_ANON_KEY=&quot;tu-anon-public-key&quot;
                             onLoadQuotation(q);
                             onClose();
                           }}
-                          className="inline-flex items-center gap-1 px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-medium transition-colors"
+                          className="inline-flex items-center gap-1 px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-xs font-medium transition-colors border border-slate-200 dark:border-slate-700"
                           title="Cargar y ver en pantalla"
                         >
                           Cargar
@@ -315,7 +315,7 @@ VITE_SUPABASE_ANON_KEY=&quot;tu-anon-public-key&quot;
                           onDuplicateQuotation(q);
                           onClose();
                         }}
-                        className="inline-flex items-center gap-1 px-2.5 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-xs font-medium transition-colors"
+                        className="inline-flex items-center gap-1 px-2.5 py-1.5 bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:hover:bg-blue-900/60 text-blue-700 dark:text-blue-300 rounded-lg text-xs font-medium transition-colors border border-blue-200 dark:border-blue-800"
                         title="Duplicar como nueva con siguiente correlativo"
                       >
                         <Copy className="w-3 h-3" />
@@ -323,7 +323,7 @@ VITE_SUPABASE_ANON_KEY=&quot;tu-anon-public-key&quot;
                       </button>
                       <button
                         onClick={() => onDeleteHistoryItem(q.correlativeNumber)}
-                        className="p-1.5 text-slate-400 hover:text-red-600 rounded-lg hover:bg-red-50 transition-colors"
+                        className="p-1.5 text-slate-400 hover:text-red-600 dark:hover:text-red-400 rounded-lg hover:bg-red-50 dark:hover:bg-red-950/40 transition-colors"
                         title="Eliminar del historial"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -337,11 +337,11 @@ VITE_SUPABASE_ANON_KEY=&quot;tu-anon-public-key&quot;
         </div>
 
         {/* Footer */}
-        <div className="bg-slate-50 border-t border-slate-200 px-6 py-3 flex justify-between items-center text-xs text-slate-500">
+        <div className="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 px-6 py-3 flex justify-between items-center text-xs text-slate-500 dark:text-slate-400">
           <span>Base de Datos sincronizada • Total en archivo: {history.length} cotización(es)</span>
           <button
             onClick={onClose}
-            className="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded-lg font-medium transition-colors"
+            className="px-4 py-2 bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-lg font-medium transition-colors"
           >
             Cerrar
           </button>
